@@ -1,20 +1,12 @@
 <template>
   <div id="app">
-    <h1>Stay tuned!</h1>
-    <DeezerCredits />
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/playlist/1">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-import DeezerCredits from "./components/DeezerCredits.vue";
-
-export default {
-  name: "App",
-  components: {
-    DeezerCredits,
-  },
-};
-</script>
 
 <style>
 #app {
@@ -22,6 +14,19 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  margin-top: 60px;
+  color: #2c3e50;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
