@@ -1,13 +1,44 @@
 import express from 'express';
 
+const https = require('https');
+
+const deezerAPIURL = 'https://api.deezer.com';
+// Deezer endpoints
+// https://api.deezer.com/chart/0/playlists
+// https://developers.deezer.com/api/explorer?url=playlist/:id
+
 export default (app) => {
   app.use(express.json());
   
-  app.get('/foo', (req, res) => {
-    res.json({msg: 'foo'});
+  app.get('/playlists', (req, res) => {
+    https.get(`${deezerAPIURL}/chart/0/playlists`, (resp) => {
+      let data = '';
+
+      resp.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      resp.on('end', () => {
+        res.json(JSON.parse(data).data);
+      });
+    }).on("error", (err) => {
+      console.log(`Error: ${err.message}`);
+    });
   });
   
-  app.post('/bar', (req, res) => {
-    res.json(req.body);
+  app.get('/playlists/:id', (req, res) => {
+    https.get(`${deezerAPIURL}/playlist/${req.params.id}`, (resp) => {
+      let data = '';
+
+      resp.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      resp.on('end', () => {
+        res.json(JSON.parse(data));
+      });
+    }).on("error", (err) => {
+      console.log(`Error: ${err.message}`);
+    });
   });
 }
