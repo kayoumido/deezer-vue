@@ -26,7 +26,7 @@ export default {
 
 .root{
   display: flex;
-  width: 35%;
+  margin: 10px 0;
   height: 125px;
   justify-content: center;
   align-content: center;

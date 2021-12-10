@@ -11,7 +11,7 @@ export default (app) => {
   app.use(express.json());
   
   app.get('/playlists', async (req, res) => {
-    const { data: { data: playlists, } } = await axios.get(`${deezerAPIURL}/chart/0/playlists`);
+    const { data: { data: playlists, } } = await axios.get(`${deezerAPIURL}/chart/0/playlists?limit=20`);
     res.json(playlists);
   });
   
