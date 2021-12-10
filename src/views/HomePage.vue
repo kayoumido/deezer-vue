@@ -1,12 +1,20 @@
 <template>
-  <h1>Home</h1>
+  <div class="root">
+    <h1>Home</h1>
+    <Playlist id=3 pictureUrl="https://picsum.photos/250" name="Lorem" description="Ipsum blabla" />
+  </div>
 </template>
 
-<script>
-export default {
-  name: "HomePage"
-}
 
+<script>
+import Playlist from '../components/Playlist.vue'
+
+export default {
+  name: "HomePage",
+  components: {
+    Playlist
+  }
+}
 </script>
 
 <style scoped>
