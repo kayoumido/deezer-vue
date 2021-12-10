@@ -12,7 +12,7 @@ const routes = [
     component: HomePage,
   },
   {
-    path: '/playlist/:id',
+    path: '/playlists/:id',
     name: 'PlaylistPage',
     component: PlaylistPage,
   },

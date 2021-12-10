@@ -1,11 +1,11 @@
 <template>
-  <div class="root"  @click="$router.push('/playlists/' + id)" >
+  <div class="root" @click="$router.push(`/playlists/${id}`)" >
     <div class="picture">
       <img :src="pictureUrl" alt="image">
     </div>
     <div class="text">
-      <h3>{{name}}</h3>
-      <p>{{description}}</p>
+      <h3>{{ name }}</h3>
+      <p>{{ description }}</p>
     </div>
   </div>
 </template>
