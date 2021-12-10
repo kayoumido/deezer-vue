@@ -1,11 +1,11 @@
 <template>
-  <section class="playlist">
+  <main class="playlist" v-if="!loading">
     <section id="playlist-info" class="playlist-header">
-      <img class="playlist-cover" :src="playlist.picture_big" />
+      <img class="playlist-cover" :src="playlist.picture_big" alt="Playlist cover image"/>
       <div class="playlist-text">
-        <p class="playlist-type">Playlist</p>
-        <p class="playlist-name title">Hits of the moment</p>
-        <p class="playlist-author">By Fábio - Deezer Pop Editor</p>
+        <p class="playlist-type">{{ playlist.type }}</p>
+        <p class="playlist-name title">{{ playlist.title }}</p>
+        <p class="playlist-author">By {{ playlist.creator.name }}</p>
         <p class="playlist-info">2016 · 60 songs · 162 minutes</p>
       </div>
     </section>
@@ -46,7 +46,7 @@
       </div>
     </section>
     -->
-  </section>
+  </main>
 </template>
 
 <script>
@@ -80,6 +80,14 @@ export default {
 </script>
 
 <style scoped>
+.playlist {
+  display: flex;
+  flex: 1;
+  max-height: calc(100vh - 80px);
+  height: 100%;
+  padding: 86px;
+}
+
 .playlist-header {
   display: flex;
   margin-bottom: 48px;
