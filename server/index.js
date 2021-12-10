@@ -10,23 +10,13 @@ const deezerAPIURL = 'https://api.deezer.com';
 export default (app) => {
   app.use(express.json());
   
-  app.get('/playlists', (req, res) => {
-    axios.get(`${deezerAPIURL}/chart/0/playlists`)
-      .then(response => {
-        res.json(response.data.data);
-      })
-      .catch(err => {
-        console.error(err);
-      });
+  app.get('/playlists', async (req, res) => {
+    const { data: { data: playlists, } } = await axios.get(`${deezerAPIURL}/chart/0/playlists`);
+    res.json(playlists);
   });
   
-  app.get('/playlists/:id', (req, res) => {
-    axios.get(`${deezerAPIURL}/playlist/${req.params.id}`)
-      .then(response => {
-        res.json(JSON.parse(response.data));
-      })
-      .catch(err => {
-        console.error(err);
-      });
+  app.get('/playlists/:id', async (req, res) => {
+    const { data: playlist } = await axios.get(`${deezerAPIURL}/playlist/${req.params.id}`);
+    res.json(playlist);
   });
 }
