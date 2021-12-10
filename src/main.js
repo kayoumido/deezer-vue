@@ -4,8 +4,9 @@ import VueRouter from 'vue-router';
 import router from './router'
 import axios from 'axios';
 
-Vue.prototype.$axios = axios;
+import './assets/style/normalize.css';
 
+Vue.prototype.$axios = axios;
 Vue.use(VueRouter);
 
 new Vue({
