@@ -6,11 +6,10 @@
         <p class="playlist-type">{{ playlist.type }}</p>
         <p class="playlist-name title">{{ playlist.title }}</p>
         <p class="playlist-author">By {{ playlist.creator.name }}</p>
-        <p class="playlist-info">2016 · 60 songs · 162 minutes</p>
+        <p class="playlist-info">2016 · 60 songs · {{ duration }} minutes</p>
       </div>
     </section>
 
-    <!--
     <section class="playlist-songs">
       <div class="song">
         <p class="song-name subtitle">Stay</p>
@@ -45,7 +44,6 @@
         <p class="song-artist">Billie Eilish</p>
       </div>
     </section>
-    -->
   </main>
 </template>
 
@@ -70,10 +68,14 @@ export default {
         this.playlist = playlist;
       } catch (error) {
         this.error = true;
-        console.error(error);
       }
       this.loading = false;
-      console.log(this.playlist);
+    },
+  },
+  computed: {
+    duration() {
+      const seconds = this.playlist.tracks.data.reduce((acc, track) => acc + track.duration, 0);
+      return Math.round(seconds / 60);
     },
   },
 }
@@ -82,6 +84,7 @@ export default {
 <style scoped>
 .playlist {
   display: flex;
+  flex-direction: column;
   flex: 1;
   max-height: calc(100vh - 80px);
   height: 100%;
