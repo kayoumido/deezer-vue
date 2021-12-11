@@ -11,45 +11,17 @@
     </section>
 
     <section class="playlist-songs">
-      <div class="song">
-        <p class="song-name subtitle">Stay</p>
-        <p class="song-artist">The Kid Laroi</p>
-      </div>
-      <div class="song">
-        <p class="song-name subtitle">INDUSTRY BABY</p>
-        <p class="song-artist">Lil Nas X</p>
-      </div>
-      <div class="song">
-        <p class="song-name subtitle">Woman</p>
-        <p class="song-artist">Doja Cat</p>
-      </div>
-      <div class="song">
-        <p class="song-name subtitle">Bad Habits</p>
-        <p class="song-artist">Ed Sheeran</p>
-      </div>
-      <div class="song">
-        <p class="song-name subtitle">Way 2 Sexy</p>
-        <p class="song-artist">Drake</p>
-      </div>
-      <div class="song">
-        <p class="song-name subtitle">Pepas</p>
-        <p class="song-artist">Farruko</p>
-      </div>
-      <div class="song">
-        <p class="song-name subtitle">Take My Breath</p>
-        <p class="song-artist">The Weeknd</p>
-      </div>
-      <div class="song">
-        <p class="song-name subtitle">Happier Than Ever</p>
-        <p class="song-artist">Billie Eilish</p>
-      </div>
+      <Track v-for="track in playlist.tracks.data" :key="track.id" :track="track" :display-controls="true" />
     </section>
   </main>
 </template>
 
 <script>
+import Track from "@/components/Track";
+
 export default {
   name: "PlaylistPage",
+  components: {Track},
   data() {
     return {
       loading: true,
