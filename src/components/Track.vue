@@ -2,7 +2,7 @@
   <div class="track"> <!-- TODO Add `track--playing` class if song is playing -->
     <div class="track-cover track-cover--small">
       <img :src="track.album.cover_small" :alt="track.title" />
-      <div v-if="displayControls" class="track-play">
+      <div v-if="playable" class="track-play">
         <div class="play">
           <svg focusable="false" height="1em" role="img" width="1em" viewBox="0 0 12 12" aria-hidden="true">
             <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.5.5v11l9-5.5z"></path>
@@ -16,7 +16,7 @@
       <p class="body--small">{{ track.artist.name }}</p>
     </div>
 
-    <div v-if="displayControls" class="track-controls">
+    <div v-if="displayControls" @click="$store.dispatch('addTrackToQueue', track)" class="track-controls">
       <svg viewBox="0 0 24 24" width="24" height="24" focusable="false" role="img" aria-hidden="true">
         <g>
           <path d="M8.5 14a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 1a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13zM8 4.4h1v3.649l2.333 2.078-.666.746L8 8.497V4.4zM17 3h5v1h-5V3zm0 9h5v1h-5v-1zM2 21v1h20v-1H2z"></path>
@@ -38,9 +38,9 @@ export default {
       type: Boolean,
       default: false,
     },
-    bigTrack: {
+    playable: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
 }
@@ -49,7 +49,6 @@ export default {
 <style scoped>
 .track {
   display: flex;
-  height: 100%;
   align-items: center;
   padding: 8px;
   border-radius: 8px;

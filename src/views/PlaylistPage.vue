@@ -16,12 +16,17 @@
           <p class="playlist-type">{{ type }}</p>
           <p class="playlist-name title">{{ playlist.title }}</p>
           <p class="playlist-author">By {{ playlist.creator.name }}</p>
-          <p class="playlist-info">{{ creationYear }} · {{ songCount }} songs · {{ duration }} minutes</p>
+          <p class="playlist-info overline">{{ creationYear }} · {{ songCount }} songs · {{ duration }} minutes</p>
         </div>
       </section>
 
       <section class="playlist-songs">
-        <Track v-for="track in playlist.tracks.data" :key="track.id" :track="track" :display-controls="true" />
+        <Track
+            v-for="track in playlist.tracks.data"
+            :key="track.id"
+            :track="track"
+            :display-controls="true"
+        />
       </section>
     </main>
     <Queue/>
@@ -34,7 +39,7 @@ import Queue from "@/components/Queue";
 
 export default {
   name: "PlaylistPage",
-  components: {Queue, Track},
+  components: { Queue, Track },
   data() {
     return {
       loading: true,
