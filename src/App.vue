@@ -32,6 +32,7 @@ body {
   --grey-400: #9CA3AF;
   --grey-200: #E5E7EB;
   --grey-100: #F3F4F6;
+  --accent: #ef5466;
 }
 
 h1,

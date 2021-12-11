@@ -1,5 +1,5 @@
 <template>
-  <div class="track">
+  <div class="track"> <!-- TODO Add `track--playing` class if song is playing -->
     <div class="track-cover track-cover--small">
       <img :src="track.album.cover_small" :alt="track.title" />
       <div v-if="displayControls" class="track-play">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="track-info">
-      <p class="subtitle--small">{{ track.title }}</p>
+      <p class="track-title subtitle--small">{{ track.title }}</p>
       <p class="body--small">{{ track.artist.name }}</p>
     </div>
 
@@ -53,6 +53,10 @@ export default {
   align-items: center;
   padding: 8px;
   border-radius: 8px;
+}
+
+.track--playing .track-title {
+  color: var(--accent);
 }
 
 .track:hover {
