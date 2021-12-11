@@ -2,11 +2,20 @@
   <div class="track">
     <div class="track-cover track-cover--small">
       <img :src="track.album.cover_small" :alt="track.title" />
+      <div v-if="displayControls" class="track-play">
+        <div class="play">
+          <svg focusable="false" height="1em" role="img" width="1em" viewBox="0 0 12 12" aria-hidden="true">
+            <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.5.5v11l9-5.5z"></path>
+          </svg>
+        </div>
+      </div>
     </div>
+
     <div class="track-info">
       <p class="subtitle--small">{{ track.title }}</p>
       <p class="body--small">{{ track.artist.name }}</p>
     </div>
+
     <div v-if="displayControls" class="track-controls">
       <svg viewBox="0 0 24 24" width="24" height="24" focusable="false" role="img" aria-hidden="true">
         <g>
@@ -51,8 +60,13 @@ export default {
   cursor: pointer;
 }
 
+.track:hover .play {
+  opacity: 1;
+}
+
 .track-cover {
   margin-right: 16px;
+  position: relative;
   overflow: hidden;
 }
 
@@ -78,7 +92,38 @@ export default {
   padding: 4px;
   border-radius: 2px;
 }
+
 .track-controls:hover {
   background-color: var(--grey-200);
 }
+
+.track-play {
+  top: 0;
+  left: 0;
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+}
+
+.play {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  position: relative;
+  opacity: 0;
+
+  border-color: transparent;
+  border-radius: 50%;
+
+  height: 32px;
+  width: 32px;
+  background-color: rgb(255, 255, 255);
+}
+
+
 </style>
