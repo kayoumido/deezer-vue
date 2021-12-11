@@ -1,13 +1,13 @@
 <template>
-  <div class="track"> <!-- TODO Add `track--playing` class if song is playing -->
+  <div :class="['track', {'track--playing': track === $store.state.currentTrack}]"> <!-- TODO Add `track--playing` class if song is playing -->
     <div class="track-cover track-cover--small">
       <img :src="track.album.cover_small" :alt="track.title" />
       <div v-if="playable" class="track-play">
-        <div class="play">
+        <button @click="$store.dispatch('playTrack', track)" class="play">
           <svg focusable="false" height="1em" role="img" width="1em" viewBox="0 0 12 12" aria-hidden="true">
             <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.5.5v11l9-5.5z"></path>
           </svg>
-        </div>
+        </button>
       </div>
     </div>
 
