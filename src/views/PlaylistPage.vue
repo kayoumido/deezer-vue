@@ -3,10 +3,10 @@
     <section id="playlist-info" class="playlist-header">
       <img class="playlist-cover" :src="playlist.picture_big" alt="Playlist cover image"/>
       <div class="playlist-text">
-        <p class="playlist-type">{{ playlist.type }}</p>
+        <p class="playlist-type">{{ type }}</p>
         <p class="playlist-name title">{{ playlist.title }}</p>
         <p class="playlist-author">By {{ playlist.creator.name }}</p>
-        <p class="playlist-info">2016 · 60 songs · {{ duration }} minutes</p>
+        <p class="playlist-info">{{ creationYear }} · {{ songCount }} songs · {{ duration }} minutes</p>
       </div>
     </section>
 
@@ -76,6 +76,15 @@ export default {
     duration() {
       const seconds = this.playlist.tracks.data.reduce((acc, track) => acc + track.duration, 0);
       return Math.round(seconds / 60);
+    },
+    songCount() {
+      return this.playlist.tracks.data.length;
+    },
+    creationYear() {
+      return (new Date(this.playlist.creation_date)).getFullYear();
+    },
+    type() {
+      return this.playlist.type.charAt(0).toUpperCase() + this.playlist.type.slice(1);
     },
   },
 }
