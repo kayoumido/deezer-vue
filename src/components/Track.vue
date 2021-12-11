@@ -1,9 +1,15 @@
 <template>
-  <div :class="['track', {'track--playing': track === $store.state.currentTrack}]"> <!-- TODO Add `track--playing` class if song is playing -->
+  <div :class="['track', {'track--playing': track === $store.state.currentTrack}]">
     <div class="track-cover track-cover--small">
       <img :src="track.album.cover_small" :alt="track.title" />
-      <div v-if="playable" class="track-play">
-        <button @click="$store.dispatch('playTrack', track)" class="play">
+      <div v-if="playable" class="track-controls">
+        <button v-if="track === $store.state.currentTrack" class="control pause">
+          <span class="equalizer"></span>
+          <svg focusable="false" height="1em" role="img" width="1em" viewBox="0 0 12 12" aria-hidden="true">
+            <path d="M2.495 0h2.01C4.778 0 5 .224 5 .5v11a.5.5 0 0 1-.495.5h-2.01A.498.498 0 0 1 2 11.5V.5a.5.5 0 0 1 .495-.5ZM7 .5a.5.5 0 0 1 .495-.5h2.01c.273 0 .495.224.495.5v11a.5.5 0 0 1-.495.5h-2.01A.498.498 0 0 1 7 11.5V.5Z"></path>
+          </svg>
+        </button>
+        <button v-else @click="$store.dispatch('playTrack', track)" class="control play">
           <svg focusable="false" height="1em" role="img" width="1em" viewBox="0 0 12 12" aria-hidden="true">
             <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.5.5v11l9-5.5z"></path>
           </svg>
@@ -16,7 +22,7 @@
       <p class="body--small">{{ track.artist.name }}</p>
     </div>
 
-    <div v-if="displayControls" @click="$store.dispatch('addTrackToQueue', track)" class="track-controls">
+    <div v-if="displayControls" @click="$store.dispatch('addTrackToQueue', track)" class="track-add_queue">
       <svg viewBox="0 0 24 24" width="24" height="24" focusable="false" role="img" aria-hidden="true">
         <g>
           <path d="M8.5 14a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 1a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13zM8 4.4h1v3.649l2.333 2.078-.666.746L8 8.497V4.4zM17 3h5v1h-5V3zm0 9h5v1h-5v-1zM2 21v1h20v-1H2z"></path>
@@ -63,8 +69,16 @@ export default {
   cursor: pointer;
 }
 
-.track:hover .play {
+.track:hover .control {
   opacity: 1;
+}
+
+.track:hover .control svg {
+  display: inline;
+}
+
+.track:hover .equalizer {
+  display: none;
 }
 
 .track-cover {
@@ -88,7 +102,7 @@ export default {
   flex-grow: 1;
 }
 
-.track-controls {
+.track-add_queue {
   display: flex;
   align-items: center;
   margin-right: 8px;
@@ -96,11 +110,11 @@ export default {
   border-radius: 2px;
 }
 
-.track-controls:hover {
+.track-add_queue:hover {
   background-color: var(--grey-200);
 }
 
-.track-play {
+.track-controls {
   top: 0;
   left: 0;
   position: absolute;
@@ -113,7 +127,7 @@ export default {
   width: 100%;
 }
 
-.play {
+.control {
   align-items: center;
   display: inline-flex;
   justify-content: center;
@@ -128,5 +142,18 @@ export default {
   background-color: rgb(255, 255, 255);
 }
 
+.pause {
+  opacity: 1;
+}
+
+.pause svg {
+  display: none;
+}
+
+.equalizer {
+  background-image: url("../assets/images/equalizer.gif");
+  width: 12px;
+  height: 12px;
+}
 
 </style>
