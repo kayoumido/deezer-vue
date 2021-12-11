@@ -1,36 +1,40 @@
 <template>
-  <main class="playlist" v-if="!loading">
-    <div class="navigation" @click="$router.push('/')">
-      <span class="navigation-arrow">
-        <svg viewBox="0 0 16 16" width="16" height="16" focusable="false" role="img" aria-hidden="true">
-          <g><path d="m4.5 8 6.277-6 .723.691L5.946 8l5.554 5.309-.723.691L4.5 8z"></path></g>
-        </svg>
-      </span>
-      <span class="navigation-text subtitle">Back to playlists</span>
-    </div>
-
-    <section id="playlist-info" class="playlist-header">
-      <img class="playlist-cover" :src="playlist.picture_big" alt="Playlist cover image"/>
-      <div class="playlist-text">
-        <p class="playlist-type">{{ type }}</p>
-        <p class="playlist-name title">{{ playlist.title }}</p>
-        <p class="playlist-author">By {{ playlist.creator.name }}</p>
-        <p class="playlist-info">{{ creationYear }} · {{ songCount }} songs · {{ duration }} minutes</p>
+  <div v-if="!loading" class="root">
+    <main class="playlist">
+      <div class="navigation" @click="$router.push('/')">
+        <span class="navigation-arrow">
+          <svg viewBox="0 0 16 16" width="16" height="16" focusable="false" role="img" aria-hidden="true">
+            <g><path d="m4.5 8 6.277-6 .723.691L5.946 8l5.554 5.309-.723.691L4.5 8z"></path></g>
+          </svg>
+        </span>
+        <span class="navigation-text subtitle">Back to playlists</span>
       </div>
-    </section>
 
-    <section class="playlist-songs">
-      <Track v-for="track in playlist.tracks.data" :key="track.id" :track="track" :display-controls="true" />
-    </section>
-  </main>
+      <section id="playlist-info" class="playlist-header">
+        <img class="playlist-cover" :src="playlist.picture_big" alt="Playlist cover image"/>
+        <div class="playlist-text">
+          <p class="playlist-type">{{ type }}</p>
+          <p class="playlist-name title">{{ playlist.title }}</p>
+          <p class="playlist-author">By {{ playlist.creator.name }}</p>
+          <p class="playlist-info">{{ creationYear }} · {{ songCount }} songs · {{ duration }} minutes</p>
+        </div>
+      </section>
+
+      <section class="playlist-songs">
+        <Track v-for="track in playlist.tracks.data" :key="track.id" :track="track" :display-controls="true" />
+      </section>
+    </main>
+    <Queue/>
+  </div>
 </template>
 
 <script>
 import Track from "@/components/Track";
+import Queue from "@/components/Queue";
 
 export default {
   name: "PlaylistPage",
-  components: {Track},
+  components: {Queue, Track},
   data() {
     return {
       loading: true,
@@ -72,6 +76,13 @@ export default {
 </script>
 
 <style scoped>
+.root {
+  display: flex;
+  flex: 1;
+  max-height: calc(100vh - 80px);
+  height: 100%;
+}
+
 .navigation {
   margin-bottom: 30px;
 }
@@ -98,6 +109,9 @@ export default {
 }
 
 .playlist {
+  overflow: hidden;
+  overflow-y: auto;
+
   display: flex;
   flex-direction: column;
   flex: 1;
