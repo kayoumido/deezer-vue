@@ -35,9 +35,8 @@ export default {
     async fetch() {
         this.loading = true;
       try {
-        const {data: playlists} = await axios.get('/playlists');
+        const { data: playlists } = await axios.get('/playlists');
         this.playlists = playlists;
-        console.log(playlists)
       } catch (error) {
         this.error = true;
         console.error(error);
