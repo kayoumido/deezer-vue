@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     queue: [],
     currentTrack: null,
+    playing: false,
   },
   mutations: {
     addTrackToQueue(state, track) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     setCurrentTrack(state, track) {
       state.currentTrack = track;
     },
+    setPlaying(state, playing) {
+      state.playing = playing;
+    }
   },
   actions: {
     addTrackToQueue({ commit }, track) {
@@ -22,7 +26,11 @@ export default new Vuex.Store({
     },
     playTrack({ commit }, track) {
       commit('setCurrentTrack', track);
+      commit('setPlaying', true);
     },
+    pauseTrack({ commit }) {
+      commit('setPlaying', false);
+    }
   },
   getters: {
     isQueueEmpty(state) {
