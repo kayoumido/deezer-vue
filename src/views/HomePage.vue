@@ -14,7 +14,6 @@
 
 <script>
 import Playlist from '../components/Playlist.vue';
-import axios from 'axios';
 
 export default {
   name: "HomePage",
@@ -35,7 +34,7 @@ export default {
     async fetch() {
         this.loading = true;
       try {
-        const { data: playlists } = await axios.get('/playlists');
+        const { data: playlists } = await this.$axios.get('/playlists');
         this.playlists = playlists;
       } catch (error) {
         this.error = true;
