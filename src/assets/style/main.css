@@ -17,59 +17,7 @@
   overflow-y: auto;
 }
 
-.playlist {
-  padding: 86px;
-  flex: 1;
-}
 
-.playlist-header {
-  margin-bottom: 48px;
-}
-
-.song {
-  margin-bottom: 32px;
-  padding-left: 16px;
-}
-
-.playlist-header {
-  display: flex;
-  margin-bottom: 48px;
-}
-
-.playlist-cover {
-  width: 250px;
-  margin-right: 32px;
-}
-
-.playlist-text {
-  align-self: flex-end;
-}
-
-.playlist-name {
-  margin: 8px 0;
-}
-
-.queue {
-  width: 330px;
-  background-color: var(--grey-100);
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-  border-left: 1px solid var(--grey-200);
-}
-
-.queue-controls {
-  position: absolute;
-  top: 32px;
-  left: 32px;
-}
-
-.queue-songs--empty {
-  color: var(--grey-400);
-}
 
 .player {
   display: flex;
@@ -83,16 +31,6 @@
 .player-item {
   display: flex;
   width: 40%;
-}
-
-.player-current_song {
-  height: 100%;
-  align-items: center;
-}
-
-.current_song-cover {
-  height: 100%;
-  margin-right: 16px;
 }
 
 .player-controls {

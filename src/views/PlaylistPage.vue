@@ -1,5 +1,14 @@
 <template>
   <main class="playlist" v-if="!loading">
+    <div class="navigation" @click="$router.push('/')">
+      <span class="navigation-arrow">
+        <svg viewBox="0 0 16 16" width="16" height="16" focusable="false" role="img" aria-hidden="true">
+          <g><path d="m4.5 8 6.277-6 .723.691L5.946 8l5.554 5.309-.723.691L4.5 8z"></path></g>
+        </svg>
+      </span>
+      <span class="navigation-text subtitle">Back to playlists</span>
+    </div>
+
     <section id="playlist-info" class="playlist-header">
       <img class="playlist-cover" :src="playlist.picture_big" alt="Playlist cover image"/>
       <div class="playlist-text">
@@ -63,6 +72,31 @@ export default {
 </script>
 
 <style scoped>
+.navigation {
+  margin-bottom: 30px;
+}
+
+.navigation-arrow,
+.navigation-text {
+  cursor: pointer;
+}
+
+.navigation-arrow {
+  display: inline-block;
+  font-size: 24px;
+  height: 24px;
+  line-height: 24px;
+  vertical-align: middle;
+  width: 24px;
+}
+
+.navigation-text {
+  display: inline-block;
+  line-height: 24px;
+  margin: 0 16px;
+  vertical-align: middle;
+}
+
 .playlist {
   display: flex;
   flex-direction: column;
