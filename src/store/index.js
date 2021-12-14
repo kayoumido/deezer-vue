@@ -12,7 +12,7 @@ export default new Vuex.Store({
   mutations: {
     addTrackToQueue(state, track) {
       if (track != null) {
-        if (state.queue.length === 0) {
+        if (state.queue.length === 0 && !state.playing) {
           state.currentTrack = track
         }
         state.queue.push(track);
