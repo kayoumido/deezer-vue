@@ -1,10 +1,17 @@
 <template>
   <div id="app">
     <router-view/>
+    <Player/>
   </div>
 </template>
 
 <script>
+import Player from "./components/Player.vue";
+
+export default {
+  name: 'App',
+  components: { Player }
+  }
 /*
  *  HomePage.vue (route 0) - Teo
  *      Playlist.vue (list)

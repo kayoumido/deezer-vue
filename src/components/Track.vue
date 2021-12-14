@@ -66,7 +66,6 @@ export default {
 
 .track:hover {
   background-color: var(--grey-100);
-  cursor: pointer;
 }
 
 .track:hover .control {
@@ -75,6 +74,7 @@ export default {
 
 .track:hover .control svg {
   display: inline;
+  cursor: pointer;
 }
 
 .track:hover .equalizer {
@@ -112,6 +112,7 @@ export default {
 
 .track-add_queue:hover {
   background-color: var(--grey-200);
+  cursor: pointer;
 }
 
 .track-controls {

@@ -11,6 +11,7 @@
           v-for="track in $store.state.queue"
           :key="track.id"
           :track="track"
+          :playable="false"
           :display-controls="false"
       />
     </div>

@@ -6,15 +6,36 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     queue: [],
-    currentTrack: null,
-    playing: false,
+    listenedStack : [],
+    currentTrack: "placeholder"
   },
   mutations: {
     addTrackToQueue(state, track) {
-      state.queue.push(track);
+      if(track != null){
+        if(state.queue.length == 0){
+          state.currentTrack = track
+        }
+        state.queue.push(track);
+      }
+    },
+    addTrackToStartOfQueue(state, track) {
+      if(track != null)
+      state.queue.unshift(track)
+    },
+    addTrackToListenedStack(state, track) {
+      if(track != null)
+      state.listenedStack.unshift(track);
+    },
+    popTrackFromListenedStack(state) {
+      if(state.listenedStack.length > 0)
+      state.listenedStack = state.listenedStack.slice(1,state.listenedStack.length)
     },
     setCurrentTrack(state, track) {
       state.currentTrack = track;
+    },
+    popTrackFromQueue(state) {
+      if(state.queue.length > 0)
+      state.queue = state.queue.slice(1,state.queueSize)  
     },
     setPlaying(state, playing) {
       state.playing = playing;
@@ -30,6 +51,23 @@ export default new Vuex.Store({
     },
     pauseTrack({ commit }) {
       commit('setPlaying', false);
+    },
+    nextTrack({ commit }) {
+      if(this.state.currentTrack == this.state.queue[0]){
+        commit('setCurrentTrack', this.state.queue[1]);
+        commit('addTrackToListenedStack', this.state.queue[0]);
+        commit('popTrackFromQueue')
+      } else {
+        commit('setCurrentTrack', this.state.queue[0]);
+      }
+      if(this.state.queue.length === 0){
+        commit('setPlaying', false)
+      }
+    },
+    previousTrack({ commit }) {
+      commit('addTrackToStartOfQueue', this.state.listenedStack[0])
+      commit('setCurrentTrack', this.state.queue[0]);
+      commit('popTrackFromListenedStack')
     }
   },
   getters: {
@@ -38,6 +76,8 @@ export default new Vuex.Store({
     },
     queueSize(state) {
       return state.queue.length;
+    }, currentTrack(state) {
+      return state.currentTrack;
     },
   },
 });

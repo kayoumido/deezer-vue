@@ -17,32 +17,6 @@
   overflow-y: auto;
 }
 
-
-
-.player {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 0;
-  height: 80px;
-  border-top: 1px solid var(--grey-200);
-}
-
-.player-item {
-  display: flex;
-  width: 40%;
-}
-
-.player-controls {
-  justify-content: center;
-  gap: 32px;
-  width: 20%;
-}
-
-.player-controls .control {
-  width: 40px;
-}
-
 .branding {
   padding-right: 16px;
   justify-content: flex-end;

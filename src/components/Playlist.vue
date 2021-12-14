@@ -1,5 +1,5 @@
 <template>
-  <div class="root" @click="$router.push(`/playlists/${id}`)" >
+  <div class="playlist-root" @click="$router.push(`/playlists/${id}`)" >
     <div class="picture">
       <img :src="pictureUrl" alt="image">
     </div>
@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 
-.root{
+.playlist-root{
   display: flex;
   margin: 10px 0;
   height: 125px;
@@ -33,7 +33,7 @@ export default {
   border-radius: 5px;
 }
 
-.root:hover{
+.playlist-root:hover{
   cursor:pointer;
   background: rgba(211, 211, 211, 0.212);
 }

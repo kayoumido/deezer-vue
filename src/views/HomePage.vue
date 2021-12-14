@@ -44,13 +44,14 @@ export default {
     }
   }
 }
-
-
-
-
 </script>
 
 <style scoped>
+
+.root{
+ padding-bottom: 80px;
+}
+
 ul{
   columns: 2;
 }
