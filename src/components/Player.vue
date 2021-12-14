@@ -1,7 +1,7 @@
 <template>
 <div id="player" class="player_root">
     <div class="track">
-     <div class="no-music" v-if="!$store.getters.currentTrack.length">
+     <div class="no-music" v-if="!Object.keys($store.state.currentTrack).length">
           <h3>No music selected</h3>
       </div>
       <div v-else>
