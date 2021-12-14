@@ -7,12 +7,12 @@ export default new Vuex.Store({
   state: {
     queue: [],
     listenedStack : [],
-    currentTrack: "placeholder"
+    currentTrack: {},
   },
   mutations: {
     addTrackToQueue(state, track) {
-      if(track != null){
-        if(state.queue.length == 0){
+      if (track != null) {
+        if (state.queue.length === 0) {
           state.currentTrack = track
         }
         state.queue.push(track);
@@ -20,15 +20,15 @@ export default new Vuex.Store({
     },
     addTrackToStartOfQueue(state, track) {
       if(track != null)
-      state.queue.unshift(track)
+        state.queue.unshift(track)
     },
     addTrackToListenedStack(state, track) {
       if(track != null)
-      state.listenedStack.unshift(track);
+        state.listenedStack.unshift(track);
     },
     popTrackFromListenedStack(state) {
       if(state.listenedStack.length > 0)
-      state.listenedStack = state.listenedStack.slice(1,state.listenedStack.length)
+        state.listenedStack = state.listenedStack.slice(1,state.listenedStack.length)
     },
     setCurrentTrack(state, track) {
       state.currentTrack = track;
@@ -53,14 +53,14 @@ export default new Vuex.Store({
       commit('setPlaying', false);
     },
     nextTrack({ commit }) {
-      if(this.state.currentTrack == this.state.queue[0]){
+      if(this.state.currentTrack === this.state.queue[0]) {
         commit('setCurrentTrack', this.state.queue[1]);
         commit('addTrackToListenedStack', this.state.queue[0]);
-        commit('popTrackFromQueue')
+        commit('popTrackFromQueue');
       } else {
         commit('setCurrentTrack', this.state.queue[0]);
       }
-      if(this.state.queue.length === 0){
+      if(this.state.queue.length === 0) {
         commit('setPlaying', false)
       }
     },
@@ -76,7 +76,8 @@ export default new Vuex.Store({
     },
     queueSize(state) {
       return state.queue.length;
-    }, currentTrack(state) {
+    },
+    currentTrack(state) {
       return state.currentTrack;
     },
   },

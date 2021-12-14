@@ -1,7 +1,7 @@
 <template>
 <div id="player" class="player_root">
     <div class="track">
-     <div class="no-music" v-if="$store.getters.currentTrack == 'placeholder'">
+     <div class="no-music" v-if="!$store.getters.currentTrack.length">
           <h3>No music selected</h3>
       </div>
       <div v-else>
@@ -9,13 +9,13 @@
       </div>
     </div>
     <div class="player">
-     <img src="..\assets\images\prev.svg" alt="Skip Previous" class="play_icon" @click="$store.dispatch('previousTrack')">
+     <img src="../assets/images/prev.svg" alt="Skip Previous" class="play_icon" @click="$store.dispatch('previousTrack')">
 
       <audio controls autoplay @ended="$store.dispatch('nextTrack')" :src="$store.getters.currentTrack.preview">
         Your browser does not support the audio element.
       </audio>
-      
-      <img src="..\assets\images\next.svg" alt="Skip Next" class="play_icon" @click="$store.dispatch('nextTrack')" >
+
+      <img src="../assets/images/next.svg" alt="Skip Next" class="play_icon" @click="$store.dispatch('nextTrack')" >
     </div>
     <div class="credits">
       <Deezer/>
