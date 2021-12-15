@@ -8,11 +8,13 @@
     </div>
     <div v-else class="queue-songs">
       <Track
-          v-for="track in $store.state.queue"
+          v-for="(track, index) in $store.state.queue"
           :key="track.id"
           :track="track"
           :playable="false"
           :display-controls="false"
+          :pos = "index"
+          
       />
     </div>
   </aside>
