@@ -11,7 +11,7 @@
     <div class="player">
      <img src="../assets/images/prev.svg" alt="Skip Previous" class="play_icon" @click="$store.dispatch('previousTrack')">
 
-      <audio controls autoplay @play="$store.dispatch('resumeTrack')" @pause="$store.dispatch('pauseTrack')" @ended="$store.dispatch('nextTrack')" :src="$store.state.currentTrack.preview">
+      <audio controls autoplay @ended="$store.dispatch('nextTrack')" :src="$store.state.currentTrack.preview">
         Your browser does not support the audio element.
       </audio>
 

@@ -49,12 +49,6 @@ export default new Vuex.Store({
       commit('setCurrentTrack', track);
       commit('setPlaying', true);
     },
-    pauseTrack({ commit }) {
-      commit('setPlaying', false);
-    },
-    resumeTrack({ commit }) {
-      commit('setPlaying', true);
-    },
     nextTrack({ commit }) {
       if(this.state.currentTrack === this.state.queue[0]) {
         commit('setCurrentTrack', this.state.queue[1]);
