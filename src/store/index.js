@@ -52,6 +52,9 @@ export default new Vuex.Store({
     pauseTrack({ commit }) {
       commit('setPlaying', false);
     },
+    resumeTrack({ commit }) {
+      commit('setPlaying', true);
+    },
     nextTrack({ commit }) {
       if(this.state.currentTrack === this.state.queue[0]) {
         commit('setCurrentTrack', this.state.queue[1]);
@@ -76,9 +79,6 @@ export default new Vuex.Store({
     },
     queueSize(state) {
       return state.queue.length;
-    },
-    currentTrack(state) {
-      return state.currentTrack;
     },
   },
 });

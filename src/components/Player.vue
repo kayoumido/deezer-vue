@@ -5,13 +5,13 @@
           <h3>No music selected</h3>
       </div>
       <div v-else>
-        <Track :track="$store.getters.currentTrack" :playable="false" />
+        <Track :track="$store.state.currentTrack" :playable="false" />
       </div>
     </div>
     <div class="player">
      <img src="../assets/images/prev.svg" alt="Skip Previous" class="play_icon" @click="$store.dispatch('previousTrack')">
 
-      <audio controls autoplay @ended="$store.dispatch('nextTrack')" :src="$store.getters.currentTrack.preview">
+      <audio controls autoplay @play="$store.dispatch('resumeTrack')" @pause="$store.dispatch('pauseTrack')" @ended="$store.dispatch('nextTrack')" :src="$store.state.currentTrack.preview">
         Your browser does not support the audio element.
       </audio>
 
