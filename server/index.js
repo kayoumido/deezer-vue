@@ -3,9 +3,6 @@ import express from 'express';
 const axios = require('axios');
 
 const deezerAPIURL = 'https://api.deezer.com';
-// Deezer endpoints
-// https://api.deezer.com/chart/0/playlists
-// https://developers.deezer.com/api/explorer?url=playlist/:id
 
 export default (app) => {
   app.use(express.json());
