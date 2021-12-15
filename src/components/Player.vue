@@ -11,11 +11,11 @@
     <div class="player">
      <img src="../assets/images/prev.svg" alt="Skip Previous" class="play_icon" @click="$store.dispatch('previousTrack')">
 
-      <audio controls autoplay @ended="$store.dispatch('nextTrack')" :src="$store.state.currentTrack.preview">
+      <audio id="audio-player" controls autoplay @ended="endedHandler" :src="$store.state.currentTrack.preview">
         Your browser does not support the audio element.
       </audio>
 
-      <img src="../assets/images/next.svg" alt="Skip Next" class="play_icon" @click="$store.dispatch('nextTrack')" >
+      <img src="../assets/images/next.svg" alt="Skip Next" class="play_icon" @click="endedHandler" >
     </div>
     <div class="credits">
       <Deezer/>
@@ -27,11 +27,19 @@
 import Deezer from "./DeezerCredits.vue"
 import Track from "./Track.vue"
 export default{
-    name: "Player",
-    components: {
-       Deezer,
-       Track
-    }
+  name: "Player",
+  components: {
+     Deezer,
+     Track
+  },
+  methods: {
+    endedHandler() {
+      this.$store.dispatch('nextTrack');
+      if (this.$store.state.queue.length === 0) {
+        document.getElementById('audio-player').src = '';
+      }
+    },
+  },
 }
 </script>
 

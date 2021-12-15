@@ -1,5 +1,5 @@
 <template>
-  <div :class="['track', {'track--playing': track === $store.state.currentTrack && (pos == -1 || pos == 0)}]">
+  <div :class="['track', {'track--playing': track === $store.state.currentTrack && (pos === -1 || pos === 0)}]">
     <div class="track-cover track-cover--small">
       <img :src="track.album.cover_small" :alt="track.title" />
       <div v-if="playable" class="track-controls">
