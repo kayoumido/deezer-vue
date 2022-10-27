@@ -1,6 +1,6 @@
 <template>
   <div class="root">
-    <h1>Home</h1>
+    <h1>Home two three four</h1>
     <div class="playlists">
         <ul>
           <li v-for="playlist in this.playlists" :key="playlist.id" style="list-style-type:none">
@@ -13,7 +13,7 @@
 
 
 <script>
-import Playlist from '../components/Playlist.vue';
+import Playlist from '@/components/Playlist.vue';
 
 export default {
   name: "HomePage",

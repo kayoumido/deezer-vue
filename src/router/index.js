@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomePage from '@/views/HomePage';
-import PlaylistPage from '@/views/PlaylistPage';
+import HomePage from '@/views/HomePage.vue';
+import PlaylistPage from '@/views/PlaylistPage.vue';
 
 Vue.use(VueRouter)
 
