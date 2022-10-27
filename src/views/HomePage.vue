@@ -13,7 +13,7 @@
 
 
 <script>
-import Playlist from '@/components/Playlist.vue';
+import Playlist from '../components/Playlist.vue';
 
 export default {
   name: "HomePage",

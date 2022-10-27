@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Player from "@/components/Player.vue";
+import Player from "./components/Player.vue";
 
 export default {
   name: 'App',

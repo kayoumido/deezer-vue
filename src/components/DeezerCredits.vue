@@ -1,7 +1,7 @@
 <template>
   <div class="root">
     <div class="text">Powered by</div>
-    <img height="30" src="@/assets/logo.png" />
+    <img src="../assets/logo.png" alt="Deezer logo" height="30px">
   </div>
 </template>
 

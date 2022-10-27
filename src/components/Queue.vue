@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Track from "@/components/Track.vue";
+import Track from "./Track.vue";
 
 export default {
   name: "Queue",

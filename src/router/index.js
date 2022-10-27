@@ -1,9 +1,7 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomePage from '@/views/HomePage.vue';
-import PlaylistPage from '@/views/PlaylistPage.vue';
+import HomePage from '../views/HomePage.vue';
+import PlaylistPage from '../views/PlaylistPage.vue';
 
-Vue.use(VueRouter)
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
@@ -18,9 +16,9 @@ const routes = [
   },
 ];
 
-const router = new VueRouter({
-  mode: 'history',
-  routes: routes,
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
 });
 
-export default router
+export default router;

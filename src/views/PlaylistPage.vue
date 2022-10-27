@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import Track from "@/components/Track.vue";
-import Queue from "@/components/Queue.vue";
+import Track from "../components/Track.vue";
+import Queue from "../components/Queue.vue";
 
 export default {
   name: "PlaylistPage",
