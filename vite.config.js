@@ -8,8 +8,7 @@ const path = require("path");
 export default defineConfig({
   resolve: {
     alias: {
-      'vue': '@vue/compat',
-      // "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
   server: {
@@ -18,15 +17,5 @@ export default defineConfig({
     },
   },
 
-  plugins: [
-    vue({
-      template: {
-        compilerOptions: {
-          compatConfig: {
-            MODE: 2
-          }
-        }
-      }
-    })
-  ],
+  plugins: [vue()],
 });
